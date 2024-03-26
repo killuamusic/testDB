@@ -57,6 +57,7 @@ public class RM1ResourceRepository {
             user.setStatus(resultSet.getString("LAST_ACTIVITY_DATE"));
             user.setStatus(resultSet.getString("CATEGORY_INDEX"));
             user.setStatus(resultSet.getString("RESOURCE_PARENT_VALUE"));
+
             return user;
         }
     }
