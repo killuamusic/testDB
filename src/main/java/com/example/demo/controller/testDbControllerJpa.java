@@ -21,11 +21,14 @@ public class testDbControllerJpa {
     @GetMapping("/get1")
     public List<RM1Resource> get1() {
 
+        System.out.println(srm1.getAllRm1_s().size());
+        System.out.println(srm1.getAllRm1_s().get(0).getStatus());
+
         System.out.println(srm1.getAllRm1_s());
         return srm1.getAllRm1_s();
     }
 
-    @GetMapping("/get1")
+    @GetMapping("/get11")
     public List<RM1Resource> get11(@RequestParam("va") String va) {
 
         System.out.println(srm1.getAllRm1_s(va));

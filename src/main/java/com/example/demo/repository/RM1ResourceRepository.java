@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Repository
@@ -17,7 +18,7 @@ public class RM1ResourceRepository {
     private JdbcTemplate jdbcTemplate;
 
     public List<RM1Resource> getAllRm1(String va) {
-        String sql = "SELECT RESOURCE_TYPE_KEY," +
+        String sql = "SELECT RESOURCE_TYPE_KEY, " +
                 "RESOURCE_VALUE, " +
                 "RESOURCE_POOL_ID, " +
                 "RESOURCE_STATUS, " +
@@ -32,7 +33,7 @@ public class RM1ResourceRepository {
 
     public List<RM1Resource> getAllRm1() {
         String va = "0926575527";
-        String sql = "SELECT RESOURCE_TYPE_KEY," +
+        String sql = "SELECT RESOURCE_TYPE_KEY, " +
                 "RESOURCE_VALUE, " +
                 "RESOURCE_POOL_ID, " +
                 "RESOURCE_STATUS, " +
@@ -49,14 +50,14 @@ public class RM1ResourceRepository {
         @Override
         public RM1Resource mapRow(ResultSet resultSet, int i) throws SQLException { // มาตามที่ set ไว้
             RM1Resource user = new RM1Resource();
+            user.setTypeKey(Integer.parseInt(resultSet.getString("RESOURCE_TYPE_KEY")));
             user.setResourceValue(resultSet.getString("RESOURCE_VALUE"));
+            user.setResourcePoolId(Integer.parseInt(resultSet.getString("RESOURCE_POOL_ID")));
             user.setStatus(resultSet.getString("RESOURCE_STATUS"));
-            user.setStatus(resultSet.getString("RESOURCE_POOL_ID"));
-            user.setStatus(resultSet.getString("RESOURCE_TYPE_KEY"));
-            user.setStatus(resultSet.getString("LAST_ACTIVITY_NAME"));
-            user.setStatus(resultSet.getString("LAST_ACTIVITY_DATE"));
-            user.setStatus(resultSet.getString("CATEGORY_INDEX"));
-            user.setStatus(resultSet.getString("RESOURCE_PARENT_VALUE"));
+            user.setLastActivityName(resultSet.getString("LAST_ACTIVITY_NAME"));
+            user.setLastActivityDate(Timestamp.valueOf(resultSet.getString("LAST_ACTIVITY_DATE")));
+            user.setCategoryIndex(Integer.parseInt(resultSet.getString("CATEGORY_INDEX")));
+            user.setSim(resultSet.getString("RESOURCE_PARENT_VALUE"));
 
             return user;
         }
