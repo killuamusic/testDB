@@ -43,11 +43,16 @@ public class testDbControllerJpa {
     }
 
     @GetMapping("/get3")
-    public Object get3(){
+    public Object get3() {
 
         System.out.println(rm1.getRM1ResourceStatus("0953582442"));
 
         return rm1.getRM1ResourceStatus("0953582442");
+    }
+
+    @GetMapping("/get4")
+    public void get4() {
+
     }
 
 }

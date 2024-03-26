@@ -17,7 +17,7 @@ public class RM1ResourceRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public Object getRM1ResourceStatus(String va){
+    public Object getRM1ResourceStatus(String va) {
         String sql = "SELECT RESOURCE_VALUE, RESOURCE_STATUS, RESOURCE_POOL_ID " +
                 "FROM RM1_RESOURCE WHERE RESOURCE_VALUE = '" + va + "'";
 
