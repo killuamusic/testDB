@@ -44,7 +44,8 @@ public class testDbControllerJpa {
 
     @GetMapping("/get3")
     public Object get3(){
-        RM1Resource rm1v = new RM1Resource();
+
+        System.out.println(rm1.getRM1ResourceStatus("0953582442"));
 
         return rm1.getRM1ResourceStatus("0953582442");
     }

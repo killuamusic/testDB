@@ -18,7 +18,7 @@ public class RM1ResourceRepository {
     private JdbcTemplate jdbcTemplate;
 
     public Object getRM1ResourceStatus(String va){
-        String sql = "SELECT RESOURCE_VALUE, RESOURCE_STATUS " +
+        String sql = "SELECT RESOURCE_VALUE, RESOURCE_STATUS, RESOURCE_POOL_ID " +
                 "FROM RM1_RESOURCE WHERE RESOURCE_VALUE = '" + va + "'";
 
         return jdbcTemplate.queryForMap(sql);
@@ -67,17 +67,6 @@ public class RM1ResourceRepository {
             user.setSim(resultSet.getString("RESOURCE_PARENT_VALUE"));
 
             return user;
-        }
-    }
-
-    private static class rm1RowMapper implements RowMapper<RM1Resource> {
-        @Override
-        public RM1Resource mapRow(ResultSet resultSet, int i) throws SQLException {
-            RM1Resource res = new RM1Resource();
-            res.setResourceValue(resultSet.getString("RESOURCE_VALUE"));
-            res.setStatus(resultSet.getString("RESOURCE_STATUS"));
-
-            return res;
         }
     }
 
