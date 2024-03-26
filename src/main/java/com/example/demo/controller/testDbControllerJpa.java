@@ -42,4 +42,11 @@ public class testDbControllerJpa {
         return rm1.getAllRm1(va);
     }
 
+    @GetMapping("/get3")
+    public Object get3(){
+        RM1Resource rm1v = new RM1Resource();
+
+        return rm1.getRM1ResourceStatus("0953582442");
+    }
+
 }
