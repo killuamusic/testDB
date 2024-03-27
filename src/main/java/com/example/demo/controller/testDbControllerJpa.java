@@ -53,6 +53,7 @@ public class testDbControllerJpa {
     @GetMapping("/get4")
     public void get4() {
 
+        System.out.println(rm1.getRM1ResourceData1("0953582442"));
     }
 
 }

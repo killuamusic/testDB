@@ -17,6 +17,13 @@ public class RM1ResourceRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    public List<RM1Resource> getRM1ResourceData1(String va) {
+        String sql = "SELECT * " +
+                "FROM RM1_RESOURCE WHERE RESOURCE_VALUE = '" + va + "'";
+
+        return jdbcTemplate.query(sql, new Rm1RowMapper());
+    }
+
     public Object getRM1ResourceStatus(String va) {
         String sql = "SELECT RESOURCE_VALUE, RESOURCE_STATUS, RESOURCE_POOL_ID " +
                 "FROM RM1_RESOURCE WHERE RESOURCE_VALUE = '" + va + "'";
@@ -35,7 +42,7 @@ public class RM1ResourceRepository {
                 "RESOURCE_PARENT_VALUE " +
                 "FROM RM1_RESOURCE WHERE RESOURCE_VALUE = '" + va + "'";
 
-        return jdbcTemplate.query(sql, new UserRowMapper());
+        return jdbcTemplate.query(sql, new Rm1RowMapper());
     }
 
     public List<RM1Resource> getAllRm1() {
@@ -50,23 +57,23 @@ public class RM1ResourceRepository {
                 "RESOURCE_PARENT_VALUE " +
                 "FROM RM1_RESOURCE WHERE RESOURCE_VALUE = '" + va + "'";
 
-        return jdbcTemplate.query(sql, new UserRowMapper());
+        return jdbcTemplate.query(sql, new Rm1RowMapper());
     }
 
-    private static class UserRowMapper implements RowMapper<RM1Resource> {
+    private static class Rm1RowMapper implements RowMapper<RM1Resource> {
         @Override
         public RM1Resource mapRow(ResultSet resultSet, int i) throws SQLException { // มาตามที่ set ไว้
-            RM1Resource user = new RM1Resource();
-            user.setTypeKey(Integer.parseInt(resultSet.getString("RESOURCE_TYPE_KEY")));
-            user.setResourceValue(resultSet.getString("RESOURCE_VALUE"));
-            user.setResourcePoolId(Integer.parseInt(resultSet.getString("RESOURCE_POOL_ID")));
-            user.setStatus(resultSet.getString("RESOURCE_STATUS"));
-            user.setLastActivityName(resultSet.getString("LAST_ACTIVITY_NAME"));
-            user.setLastActivityDate(Timestamp.valueOf(resultSet.getString("LAST_ACTIVITY_DATE")));
-            user.setCategoryIndex(Integer.parseInt(resultSet.getString("CATEGORY_INDEX")));
-            user.setSim(resultSet.getString("RESOURCE_PARENT_VALUE"));
+            RM1Resource rm1 = new RM1Resource();
+            rm1.setTypeKey(Integer.parseInt(resultSet.getString("RESOURCE_TYPE_KEY")));
+            rm1.setResourceValue(resultSet.getString("RESOURCE_VALUE"));
+            rm1.setResourcePoolId(Integer.parseInt(resultSet.getString("RESOURCE_POOL_ID")));
+            rm1.setStatus(resultSet.getString("RESOURCE_STATUS"));
+            rm1.setLastActivityName(resultSet.getString("LAST_ACTIVITY_NAME"));
+            rm1.setLastActivityDate(Timestamp.valueOf(resultSet.getString("LAST_ACTIVITY_DATE")));
+            rm1.setCategoryIndex(Integer.parseInt(resultSet.getString("CATEGORY_INDEX")));
+            rm1.setSim(resultSet.getString("RESOURCE_PARENT_VALUE"));
 
-            return user;
+            return rm1;
         }
     }
 
