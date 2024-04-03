@@ -57,6 +57,7 @@ public class testDbControllerJpa {
         for (RM1Resource r1 : rm1List) {
             System.out.println(r1.getResourceValue());
             System.out.println(r1.getStatus());
+            System.out.println(srm1.convertDateFormat2(r1.getLastActivityDate()));
         }
 
     }

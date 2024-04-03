@@ -69,7 +69,8 @@ public class RM1ResourceRepository {
             rm1.setResourcePoolId(Integer.parseInt(resultSet.getString("RESOURCE_POOL_ID")));
             rm1.setStatus(resultSet.getString("RESOURCE_STATUS"));
             rm1.setLastActivityName(resultSet.getString("LAST_ACTIVITY_NAME"));
-            rm1.setLastActivityDate(Timestamp.valueOf(resultSet.getString("LAST_ACTIVITY_DATE")));
+            rm1.setLastActivityDate(resultSet.getString("LAST_ACTIVITY_DATE"));
+//            rm1.setLastActivityDate(Timestamp.valueOf(resultSet.getString("LAST_ACTIVITY_DATE")));
             rm1.setCategoryIndex(Integer.parseInt(resultSet.getString("CATEGORY_INDEX")));
             rm1.setSim(resultSet.getString("RESOURCE_PARENT_VALUE"));
 

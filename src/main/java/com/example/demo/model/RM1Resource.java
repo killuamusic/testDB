@@ -34,7 +34,7 @@ public class RM1Resource {
     private String LastActivityName;
 
     @Column(name = "LAST_ACTIVITY_DATE")
-    private Timestamp LastActivityDate;
+    private String LastActivityDate;
 
     @Column(name = "CATEGORY_INDEX")
     private int CategoryIndex;
