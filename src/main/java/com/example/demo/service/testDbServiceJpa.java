@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.model.RM1Resource;
 import com.example.demo.repository.RM1ResourceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import java.text.DateFormat;
@@ -16,6 +17,9 @@ public class testDbServiceJpa {
 
     @Autowired
     private RM1ResourceRepository rm1Rpy;
+
+//    @Autowired
+//    private Environment env;
 
     public List<RM1Resource> getAllRm1_s(String va) {
         return rm1Rpy.getAllRm1(va);
@@ -41,6 +45,8 @@ public class testDbServiceJpa {
     public String convertDateFormat2(String inputDateString) {
         DateFormat inputDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         DateFormat outputDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+//        System.out.println(env.getProperty("app.LoginServices","-"));
 
         try {
             Date inputDate = inputDateFormat.parse(inputDateString);

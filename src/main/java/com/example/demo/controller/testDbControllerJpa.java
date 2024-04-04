@@ -4,6 +4,7 @@ import com.example.demo.model.RM1Resource;
 import com.example.demo.repository.RM1ResourceRepository;
 import com.example.demo.service.testDbServiceJpa;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +18,9 @@ public class testDbControllerJpa {
     private RM1ResourceRepository rm1;
     @Autowired
     private testDbServiceJpa srm1;
+
+    @Autowired
+    private Environment env;
 
     @GetMapping("/get1")
     public List<RM1Resource> get1() {
@@ -59,6 +63,8 @@ public class testDbControllerJpa {
             System.out.println(r1.getStatus());
             System.out.println(srm1.convertDateFormat2(r1.getLastActivityDate()));
         }
+
+//        System.out.println(env.getProperty("app.LoginServices","-"));
 
     }
 
